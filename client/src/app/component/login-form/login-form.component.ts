@@ -3,6 +3,8 @@ import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@ang
 import { Router } from '@angular/router';
 import { Input, OnInit } from '@angular/core';
 import { ApiClientService } from '../../services/apiClient/api-client.service';
+import { ApplicantDataService } from '../../services/applicant/applicant-data.service';
+import { UserData, UserResponse } from '../../interfaces/IUserResponse.interface';
 
 @Component({
   selector: 'app-login-form',
@@ -16,7 +18,7 @@ export class LoginFormComponent {
   @Input() showSignUpButton: boolean = true;
   @Input() signInRoute: string = '/applicant/';
   isLoading: boolean = false;
-
+  data!: UserResponse;
   validateForm: FormGroup<{
     email: FormControl<string>;
     password: FormControl<string>;
@@ -26,7 +28,7 @@ export class LoginFormComponent {
     password: ['', [Validators.required]],
     remember: [true]
   });
-  constructor(private fb: NonNullableFormBuilder,private apiClientService: ApiClientService, private router: Router) {}
+  constructor(private fb: NonNullableFormBuilder,private apiClientService: ApiClientService, private router: Router, private applicantDataService:ApplicantDataService) {}
 
   showSignUp(): boolean {
     return this.showSignUpButton;
@@ -41,13 +43,12 @@ export class LoginFormComponent {
     if (this.validateForm.valid) {
       const loginData = this.validateForm.value;
       this.apiClientService.loginUser(loginData).subscribe((response) => {
-        console.log('Applicant logined successfully:', response);
+        const data:UserResponse = { data: response.applicant };
+        this.applicantDataService.setNewApplicantData(data)
         const jwtToken = response.token;
         localStorage.setItem('token', jwtToken);
-        let applicantId = response.applicant.id
-        console.log(applicantId);
-        console.log('signInRoute:', this.signInRoute);
-        this.router.navigate([this.signInRoute +  '/' +  applicantId + '/profile/' + applicantId ]);
+        const applicantId = response.applicant.id
+        this.router.navigate([`${this.signInRoute   }/${   applicantId  }/profile/${  applicantId}` ])
       },
       (error) => {
         console.log("Error during login", error)
