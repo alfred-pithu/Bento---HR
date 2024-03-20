@@ -1,75 +1,60 @@
-<nz-layout class="app-layout" style="font-family: 'Proxima Nova';">
-    <nz-sider
-      class="menu-sidebar"
-      nzCollapsible
-      nzWidth="256px"
-      nzBreakpoint="md"
-      [(nzCollapsed)]="isCollapsed"
-      [nzTrigger]="null"
-    >
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null">
     <div class="sidebar-logo">
       <a href="https://getbento.vercel.app/dashboard">
         <img src="../../assets/photos and logos/logo-2.png" style="cursor: pointer; width: 6rem;" alt="">
       </a>
     </div>
-      <ul
-        nz-menu
-        nzTheme="light"
-        nzMode="inline"
-        [nzInlineCollapsed]="isCollapsed"
-      >
-        <li nz-submenu nzOpen nzTitle="Profile " nzIcon="dashboard">
-          <ul>
-            <li nz-menu-item nzMatchRouter>
-              <a [routerLink]="'/applicant/' + applicantId + '/profile/' + applicantId">Profile</a>
-            </li>
-            <li nz-menu-item nzMatchRouter>
-              <a [routerLink]="'/applicant/' + applicantId + '/experience/' + applicantId">Experience</a>
-            </li>
-            <li nz-menu-item nzMatchRouter>
-              <a [routerLink]="'/applicant/' + applicantId + '/skills/' + applicantId">Skill</a>
-            </li>
-            <li nz-menu-item nzMatchRouter>
-              <a [routerLink]="'/applicant/' + applicantId + '/applications/' + applicantId">Applications</a>
-            </li>
-            <li nz-menu-item nzMatchRouter>
-              <a [routerLink]="'/applicant/' + applicantId + '/availability/' + applicantId">Availability</a>
-            </li>
-            <li nz-menu-item nzMatchRouter>
-              <a [routerLink]="'/applicant/' + applicantId + '/settings/' + applicantId">Settings</a>
-            </li>
-          </ul>
-        </li>
-        <li nz-submenu nzOpen nzTitle="Find Job" nzIcon="dashboard">
-          <ul>
-            <li nz-menu-item nzMatchRouter>
-              <a [routerLink]="'/dashboard/' + applicantId">Job</a>
-            </li>
-          </ul>
-        </li>
-        <li nz-menu-item style="position: absolute; bottom: 20px; text-align: center;">
-          <a (click)="logout()">Logout
-            <span nz-icon nzType="logout" nzTheme="outline"></span>
-          </a>
-        </li>
-      </ul>
-    </nz-sider>
-    <nz-layout>
-      <nz-header>
-        <div class="app-header">
-          <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
-            <span
-              class="trigger"
-              nz-icon
-              [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-            ></span>
-          </span>
-        </div>
-      </nz-header>
-      <nz-content>
-        <div class="inner-content">
-          <router-outlet></router-outlet>
-        </div>
-      </nz-content>
-    </nz-layout>
+    <ul nz-menu nzTheme="light" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nz-submenu nzOpen nzTitle="Profile " nzIcon="dashboard">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="'/applicant/' + applicantId + '/profile/' + applicantId">Profile</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="'/applicant/' + applicantId + '/experience/' + applicantId">Experience</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="'/applicant/' + applicantId + '/skills/' + applicantId">Skill</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="'/applicant/' + applicantId + '/applications/' + applicantId">Applications</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="'/applicant/' + applicantId + '/availability/' + applicantId">Availability</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="'/applicant/' + applicantId + '/settings/' + applicantId">Settings</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="Find Job" nzIcon="dashboard">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="'/dashboard/' + applicantId">Job</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-menu-item style="position: absolute; bottom: 20px; text-align: center;">
+        <a (click)="logout()">Logout
+          <span nz-icon nzType="logout" nzTheme="outline"></span>
+        </a>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+          <span class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></span>
+        </span>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
   </nz-layout>
+</nz-layout>

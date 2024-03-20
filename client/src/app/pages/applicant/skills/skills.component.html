@@ -1,5 +1,5 @@
-<div style=" font-family: 'Proxima Nova'">
-    <div style="padding: 1rem; margin-left: 4px;">
+<div>
+  <div style="padding: 1rem; margin-left: 4px;">
     <h1 style="font-size: 1.875rem; font-weight: bold; padding-bottom: 1rem;">Skills</h1>
     <div *ngIf="skillTags && skillTags.length > 0" style="display: flex; flex-direction: column;">
       <nz-descriptions nzBordered nzLayout="vertical">
@@ -9,38 +9,38 @@
           </nz-tag>
         </nz-descriptions-item>
       </nz-descriptions>
-    </div>   
-    <p style="margin-top: 1rem; font-size:x-large; padding-left: .5rem;">Tell employers what skills you possess.</p> 
-<div style=" font-family: 'Proxima Nova'">
-  <form nz-form style="padding: 2rem;" [formGroup]="validateForm" (ngSubmit)="submitForm()">
-    <div style="display: flex; align-items: center; text-decoration: underline;" >
-      <svg style="cursor: pointer; border-radius: 50%; background-color: #fff;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
-        <circle cx="12" cy="12" r="10"></circle>
-        <line x1="12" y1="5" x2="12" y2="19"></line>
-        <line x1="5" y1="12" x2="19" y2="12"></line>
-      </svg>   
-    <label style="font-size: x-large; display: flex; cursor: pointer;"  (click)="showSkillTagsForm = !showSkillTagsForm">Add Skill Tags</label>
-    
-  </div>
-  <div *ngIf="showSkillTagsForm">
-          <nz-select id="select"
-          [nzMaxTagCount]="3"
-          [nzMaxTagPlaceholder]="tagPlaceHolder"
-          nzMode="multiple"
-          nzPlaceHolder="Please select"
-          formControlName="listOfSelectedValue"
-        >
-          <nz-option *ngFor="let item of listOfOption" [nzLabel]="item" [nzValue]="item"></nz-option>
-        </nz-select>
-        <ng-template #tagPlaceHolder let-selectedList>and {{ selectedList.length }} more selected</ng-template>
-          <div style="display: flex; justify-content: center; padding-top: 2rem; padding-bottom: 2rem;">
-            <button type="submit" (click)="submitForm()" nz-button style="font-family: 'Proxima Nova'; background-color: #22c55e; color: #ffffff; border-radius: 0.375rem; border-color: #22c55e; padding-left: 0.75rem; padding-right: 0.75rem; padding-top: 0.25rem; padding-bottom: 0.25rem; width: 12rem; height: 3rem; font-size: 1.5rem; " onmouseover="this.style.backgroundColor='#38a169';" onmouseout="this.style.backgroundColor='#22c55e';">Add Skills</button>
-        </div>
-        </div>
-    </form>
-    
-  </div>
-    
-</div>
-</div>
+    </div>
+    <p style="margin-top: 1rem; font-size:x-large; padding-left: .5rem;">Tell employers what skills you possess.</p>
+    <div>
+      <form nz-form style="padding: 2rem;" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <div style="display: flex; align-items: center; text-decoration: underline;">
+          <svg style="cursor: pointer; border-radius: 50%; background-color: #fff;" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"
+            stroke-linejoin="round" width="16" height="16">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <label style="font-size: x-large; display: flex; cursor: pointer;"
+            (click)="showSkillTagsForm = !showSkillTagsForm">Add Skill Tags</label>
 
+        </div>
+        <div *ngIf="showSkillTagsForm">
+          <nz-select id="select" [nzMaxTagCount]="3" [nzMaxTagPlaceholder]="tagPlaceHolder" nzMode="multiple"
+            nzPlaceHolder="Please select" formControlName="listOfSelectedValue">
+            <nz-option *ngFor="let item of listOfOption" [nzLabel]="item" [nzValue]="item"></nz-option>
+          </nz-select>
+          <ng-template #tagPlaceHolder let-selectedList>and {{ selectedList.length }} more selected</ng-template>
+          <div style="display: flex; justify-content: center; padding-top: 2rem; padding-bottom: 2rem;">
+            <button type="submit" (click)="submitForm()" nz-button
+              style="  background-color: #22c55e; color: #ffffff; border-radius: 0.375rem; border-color: #22c55e; padding-left: 0.75rem; padding-right: 0.75rem; padding-top: 0.25rem; padding-bottom: 0.25rem; width: 12rem; height: 3rem; font-size: 1.5rem; "
+              onmouseover="this.style.backgroundColor='#38a169';" onmouseout="this.style.backgroundColor='#22c55e';">Add
+              Skills</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+</div>

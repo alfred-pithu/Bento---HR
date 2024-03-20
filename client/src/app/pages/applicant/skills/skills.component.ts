@@ -47,6 +47,7 @@ export class SkillsComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.pipe(
       switchMap((params) => {
+        console.log('params', params);
         this.applicantId = params['applicantId'];
         return this.apiClientService.getApplicantData(this.applicantId);
       })
@@ -59,7 +60,6 @@ export class SkillsComponent implements OnInit {
       }
     );
   }
-
   submitForm(): void {
     if (this.validateForm.valid) {
       const updatedData = this.suitableData();
